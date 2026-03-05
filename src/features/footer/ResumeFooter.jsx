@@ -1,10 +1,16 @@
 import Button from "../../shared/ui/Button/Button";
 
-const ResumeFooter = () => {
+const ResumeFooter = (props) => {
+    const {styles} = props;
+
     return (
-        <>
-            <Button>save</Button>
-        </>
+        <div className={styles.footer}>
+            <Button
+                type="submit"
+            >
+                Зберігти
+            </Button>
+        </div>
     )
 }
 

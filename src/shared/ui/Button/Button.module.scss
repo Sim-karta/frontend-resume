@@ -1,0 +1,22 @@
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--button-height);
+    padding: 12px;
+    background-color: var(--color-accent-1);
+    color: var(--color-white);
+    border: var(--border);
+    border-radius: var(--border-radius);
+
+    &:not(:disabled) {
+        &:hover {
+            background-color: var(--color-accent-2);
+        }
+
+        &:active {
+            scale: 1.05;
+        }
+    }
+}
+

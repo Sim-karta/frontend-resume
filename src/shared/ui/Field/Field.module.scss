@@ -1,0 +1,15 @@
+.field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    row-gap: 4px;
+}
+
+.input {
+    width: 100%;
+    height: var(--input-height);
+    padding: 12px;
+    border: var(--border);
+    border-radius: var(--border-radius);
+}
