@@ -1,0 +1,48 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    padding: 1.6rem 1.6rem;
+    background-color: var(--color-white);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    column-gap: 1.6rem;
+    padding-bottom: 1.6rem;
+    border-bottom: var(--border);
+}
+
+.avatar {
+    border-radius: 50%;
+}
+
+.name {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.8rem;
+    font-size: 18px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.6rem;
+}
+
+.job {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75em 1.5em;
+    background-color: var(--color-gray-2);
+    border-radius: 10px;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em;
+}

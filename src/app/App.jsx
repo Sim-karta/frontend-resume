@@ -1,9 +1,12 @@
-import Resume from "../widgets/Resume/Resume"
+import { AccountProvider } from "../entities/resume/model/AccountContext";
+import Account from "../widgets/Account/Account";
 import './styles';
 
 const App = () => {
     return (
-		<Resume />
+		<AccountProvider>
+			<Account />
+		</AccountProvider>
     )
 }
 

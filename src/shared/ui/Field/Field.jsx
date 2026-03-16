@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import styles from './Field.module.scss'
 
 const Field = (props) => {
@@ -6,7 +7,10 @@ const Field = (props) => {
         id,
         label,
         placeholder,
-        type = 'text'
+        type = 'text',
+        value,
+        onInput,
+        ref
     } = props;
 
     return (
@@ -23,10 +27,13 @@ const Field = (props) => {
                 placeholder={placeholder}
                 autoComplete="off"
                 type={type}
+                value={value}
+                onInput={( {target} ) => onInput(target.value)}
+                ref={ref}
             />
         </div>
         
     )
 }
 
-export default Field;
+export default memo(Field);

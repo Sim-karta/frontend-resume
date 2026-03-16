@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import styles from './Button.module.scss'
 
 const Button = (props) => {
@@ -21,4 +22,4 @@ const Button = (props) => {
     )
 }
 
-export default Button;
+export default memo(Button);

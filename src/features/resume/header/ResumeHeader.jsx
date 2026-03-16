@@ -1,11 +1,27 @@
+import { memo, useCallback, useContext } from "react";
+import { AccountContext } from "../../../entities/resume/model/AccountContext";
+
 const ResumeHeader = (props) => {
     const {styles} = props;
+
+    const {
+        clearResume
+    } = useContext(AccountContext);
+
+    const onButtonClick = useCallback(() => {
+        const isConfirm = confirm('Are you sure you want to clear the form?');
+
+        if(isConfirm) {
+            clearResume();
+        }        
+    }, []);
 
     return (
         <div className={styles.header}>
             <h1 className={styles.title}>Персональна інформація</h1>
             <button
                 className={styles.closeButton}
+                onClick={onButtonClick}
             >
                 <svg
                     width="20"
@@ -27,4 +43,4 @@ const ResumeHeader = (props) => {
     )
 }
 
-export default ResumeHeader;
+export default memo(ResumeHeader);
