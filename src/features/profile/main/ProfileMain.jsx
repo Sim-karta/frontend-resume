@@ -1,4 +1,4 @@
-import { memo, useContext, useMemo } from "react";
+import { useContext, useMemo } from "react";
 import { AccountContext } from "../../../entities/resume/model/AccountContext";
 
 const ProfileMain = (props) => {
@@ -44,9 +44,11 @@ const ProfileMain = (props) => {
                 <p>{phone}</p>
             </div>
             <h3>Опис</h3>
-            <p>{description}</p>
+            <div className={styles.description}>
+                <p>{description}</p>
+            </div>
         </div>
     )
 }
 
-export default memo(ProfileMain);
+export default ProfileMain;

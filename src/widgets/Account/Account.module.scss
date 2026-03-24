@@ -1,6 +1,10 @@
 .account {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    column-gap: 1.6rem;
+    grid-template-columns: 3fr 2fr;
+    gap: rem(20);
     width: 80vw;
+
+    @include tablet {
+        grid-template-columns: 1fr;
+    }
 }

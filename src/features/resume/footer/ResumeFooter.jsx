@@ -1,4 +1,4 @@
-import { memo, useCallback, useContext } from "react";
+import { useCallback, useContext } from "react";
 import Button from "../../../shared/ui/Button/Button";
 import { AccountContext } from "../../../entities/resume/model/AccountContext";
 
@@ -56,4 +56,4 @@ const ResumeFooter = (props) => {
     )
 }
 
-export default memo(ResumeFooter);
+export default ResumeFooter;

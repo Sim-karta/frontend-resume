@@ -3,13 +3,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    row-gap: 4px;
+    row-gap: rem(4);
 }
 
 .input {
     width: 100%;
     height: var(--input-height);
-    padding: 12px;
+    padding: rem(12);
     border: var(--border);
     border-radius: var(--border-radius);
 }

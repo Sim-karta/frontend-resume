@@ -1,18 +1,19 @@
 .profile {
     display: flex;
     flex-direction: column;
-    padding: 1.6rem 1.6rem;
+    padding: rem(30);
     background-color: var(--color-white);
     border: var(--border);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
+    overflow: hidden;
 }
 
 .header {
     display: flex;
     align-items: center;
-    column-gap: 1.6rem;
-    padding-bottom: 1.6rem;
+    column-gap: rem(30);
+    padding-bottom: rem(30);
     border-bottom: var(--border);
 }
 
@@ -23,26 +24,54 @@
 .name {
     display: flex;
     flex-direction: column;
-    row-gap: 0.8rem;
+    row-gap: rem(18);
     font-size: 18px;
+    overflow: hidden;
+
+    p {
+        @include truncate;
+    }
 }
 
 .main {
     display: flex;
     flex-direction: column;
-    padding-top: 1.6rem;
+    padding-top: rem(24);
 }
 
 .job {
     display: flex;
     justify-content: space-between;
-    padding: 0.75em 1.5em;
+    padding: rem(9) rem(18);
     background-color: var(--color-gray-2);
     border-radius: 10px;
+    overflow: hidden;
+
+    p {
+        @include truncate;
+
+        max-width: 40%;
+    }
 }
 
 .contacts {
     display: flex;
     flex-direction: column;
-    gap: 0.75em;
+    gap: rem(12);
+    overflow: hidden;
+
+    p {
+        @include truncate;
+    }
+}
+
+.description {
+    flex-grow: 1;
+    max-height: rem(100);
+    overflow-y: auto;   
+
+    p { 
+        white-space: normal;
+        word-wrap: break-word;
+    }
 }

@@ -1,4 +1,4 @@
-import { memo, useCallback, useContext } from "react";
+import { useCallback, useContext } from "react";
 import { AccountContext } from "../../../entities/resume/model/AccountContext";
 
 const ResumeHeader = (props) => {
@@ -43,4 +43,4 @@ const ResumeHeader = (props) => {
     )
 }
 
-export default memo(ResumeHeader);
+export default ResumeHeader;

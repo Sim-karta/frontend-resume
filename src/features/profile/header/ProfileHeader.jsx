@@ -1,4 +1,4 @@
-import { memo, useContext, useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 import myImage from '../../../shared/assets/cat.jpg';
 import { AccountContext } from '../../../entities/resume/model/AccountContext';
 
@@ -33,4 +33,4 @@ const ProfileHeader = (props) => {
     )
 }
 
-export default memo(ProfileHeader);
+export default ProfileHeader;
