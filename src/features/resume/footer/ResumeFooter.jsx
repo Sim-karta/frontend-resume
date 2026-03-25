@@ -37,7 +37,15 @@ const ResumeFooter = (props) => {
         setUsers([...users, newUser]);
 
         clearResume();
-    }, [users]);
+    }, [users, setUsers,
+        clearResume,
+        userName,
+        userSecName,
+        userPosition,
+        userCompany,
+        userEmail,
+        userPhone,
+        userDescription]);
 
     return (
         <div className={styles.footer}>

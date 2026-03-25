@@ -1,49 +1,30 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useMemo } from "react";
 import { createContext } from "react";
+import useAccount from "./hooks/useAccount";
+import useAccountInputs from "./hooks/useAccountInputs";
 
 export const AccountContext = createContext({});
 
 export const AccountProvider = (props) => {
     const { children } = props;
 
-    const [users, setUsers] = useState(() => {
-        const savedUsers = localStorage.getItem('users');
+    const {
+        users, setUsers,
 
-        if (savedUsers) {
-            return JSON.parse(savedUsers);
-        } else {
-            return [];
-        }
-    });
+        nameInputRef
+    } = useAccount();
 
-    const [userName, setUserName] = useState('');
-    const [userSecName, setUserSecName] = useState('');
-    const [userPosition, setUserPosition] = useState('');
-    const [userCompany, setUserCompany] = useState('');
-    const [userEmail, setUserEmail] = useState('');
-    const [userPhone, setUserPhone] = useState('');
-    const [userDescription, setUserDescription] = useState('');
+    const {
+        clearResume,
 
-    const nameInputRef = useRef(null);
-
-    useEffect(() => {
-        nameInputRef.current.focus();
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem('users', JSON.stringify(users));
-        nameInputRef.current.focus();
-    }, [users]);
-
-    const clearResume = useCallback(() => {
-        setUserName('');
-        setUserSecName('');
-        setUserPosition('');
-        setUserCompany('');
-        setUserEmail('');
-        setUserPhone('');
-        setUserDescription('');
-    }, []);
+        userName, setUserName,
+        userSecName, setUserSecName,
+        userPosition, setUserPosition,
+        userCompany, setUserCompany,
+        userEmail, setUserEmail,
+        userPhone, setUserPhone,
+        userDescription, setUserDescription
+    } = useAccountInputs();
 
     const value = useMemo(() => ({
         users, setUsers,
