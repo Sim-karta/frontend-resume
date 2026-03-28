@@ -1,18 +1,35 @@
-import { memo, useContext } from "react";
+import { memo, useCallback, useContext } from "react";
 import Field from "../../../shared/ui/Field/Field"
-import { AccountContext } from "../../../entities/resume/model/AccountContext";
+import { AccountContext } from "../../../entities/account/model/AccountContext";
 
 const ResumeMain = (props) => {
     const {styles} = props;
 
     const {
-        userName, setUserName,
-        userSecName, setUserSecName,
-        userPosition, setUserPosition,
-        userCompany, setUserCompany,
-        userEmail, setUserEmail,
-        userPhone, setUserPhone,
-        userDescription, setUserDescription,
+        userName,
+        userSecName,
+        userPosition,
+        userCompany,
+        userEmail,
+        userPhone,
+        userDescription,
+
+        errorName,
+        errorSecName,
+        errorPosition,
+        errorCompany,
+        errorEmail,
+        errorPhone,
+        errorDescription,
+
+        onInputName,
+        onInputSecName,
+        onInputPosition,
+        onInputCompany,
+        onInputEmail,
+        onInputPhone,
+        onInputDescription,
+
         nameInputRef
     } = useContext(AccountContext);
 
@@ -24,7 +41,8 @@ const ResumeMain = (props) => {
                 label="Ім'я"
                 placeholder="Василь"
                 value={userName}
-                onInput={setUserName}
+                onInput={onInputName}
+                error={errorName}
                 ref={nameInputRef}
             />
             <Field 
@@ -33,7 +51,8 @@ const ResumeMain = (props) => {
                 label="Прізвище"
                 placeholder="Пупкін"
                 value={userSecName}
-                onInput={setUserSecName}
+                onInput={onInputSecName}
+                error={errorSecName}
             />
             <Field 
                 className="position"
@@ -41,7 +60,8 @@ const ResumeMain = (props) => {
                 label="Посада"
                 placeholder="Менеджер роздрібного продажу"
                 value={userPosition}
-                onInput={setUserPosition}
+                onInput={onInputPosition}
+                error={errorPosition}
             />
             <Field 
                 className="company"
@@ -49,31 +69,34 @@ const ResumeMain = (props) => {
                 label="Компанія"
                 placeholder="Майкрософт"
                 value={userCompany}
-                onInput={setUserCompany}
+                onInput={onInputCompany}
+                error={errorCompany}
             />
             <Field 
                 className="email"
                 id="email"
                 label="Електрона пошта"
                 placeholder="example@gmail.com"
-                type="email"
                 value={userEmail}
-                onInput={setUserEmail}
+                onInput={onInputEmail}
+                error={errorEmail}
             />
             <Field 
                 className="phone"
                 id="phone"
                 label="Телефон"
-                placeholder="+380(12)-345-67-89"
+                placeholder="+38(012)-345-6789"
                 value={userPhone}
-                onInput={setUserPhone}
+                onInput={onInputPhone}
+                error={errorPhone}
             />
             <Field 
                 className="description"
                 id="description"
                 label="Опис"
                 value={userDescription}
-                onInput={setUserDescription}
+                onInput={onInputDescription}
+                error={errorDescription}
             />
         </div>
     )

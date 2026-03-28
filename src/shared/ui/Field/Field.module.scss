@@ -1,4 +1,5 @@
 .field {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,4 +13,15 @@
     padding: rem(12);
     border: var(--border);
     border-radius: var(--border-radius);
+
+    &.isInvalid {
+        border-color: red;
+    }
+}
+
+.error {
+    position: absolute;
+    top: calc(100% + 2px);
+    color: red;
+    font-size: rem(10);
 }

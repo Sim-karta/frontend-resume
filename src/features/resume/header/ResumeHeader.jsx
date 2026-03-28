@@ -1,5 +1,5 @@
 import { useCallback, useContext } from "react";
-import { AccountContext } from "../../../entities/resume/model/AccountContext";
+import { AccountContext } from "../../../entities/account/model/AccountContext";
 
 const ResumeHeader = (props) => {
     const {styles} = props;

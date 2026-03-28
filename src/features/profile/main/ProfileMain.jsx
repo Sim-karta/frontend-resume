@@ -1,5 +1,5 @@
 import { useContext, useMemo } from "react";
-import { AccountContext } from "../../../entities/resume/model/AccountContext";
+import { AccountContext } from "../../../entities/account/model/AccountContext";
 
 const ProfileMain = (props) => {
     const { styles } = props;
@@ -13,23 +13,23 @@ const ProfileMain = (props) => {
     } = useContext(AccountContext);
 
     const position = useMemo(() => {
-        return userPosition ? userPosition : 'Посада';
+        return userPosition.trim() === '' ? 'Посада' : userPosition;
     }, [userPosition]);
 
     const company = useMemo(() => {
-        return userCompany ? userCompany : 'Компанія';
+        return userCompany.trim() === '' ? 'Компанія' : userCompany;
     }, [userCompany]);
 
     const email = useMemo(() => {
-        return userEmail ? userEmail : 'Пошта';
+        return userEmail.trim() === '' ? 'Пошта' : userEmail;
     }, [userEmail]);
 
     const phone = useMemo(() => {
-        return userPhone ? userPhone : 'Телефон';
+        return userPhone.trim() === '' ? 'Телефон' : userPhone;
     }, [userPhone]);
 
     const description = useMemo(() => {
-        return userDescription ? userDescription : '...';
+        return userDescription.trim() === '' ? '...' : userDescription;
     }, [userDescription]);
 
     return (

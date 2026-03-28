@@ -1,6 +1,6 @@
 import { useCallback, useContext } from "react";
 import Button from "../../../shared/ui/Button/Button";
-import { AccountContext } from "../../../entities/resume/model/AccountContext";
+import { AccountContext } from "../../../entities/account/model/AccountContext";
 
 const ResumeFooter = (props) => {
     const {styles} = props;
@@ -8,13 +8,8 @@ const ResumeFooter = (props) => {
     const {
         users, setUsers,
         clearResume,
-        userName,
-        userSecName,
-        userPosition,
-        userCompany,
-        userEmail,
-        userPhone,
-        userDescription
+        newUser,
+        formIsValid
     } = useContext(AccountContext);
 
     const writeUsers = useCallback(() => {
@@ -24,28 +19,16 @@ const ResumeFooter = (props) => {
     const saveResume = useCallback((event) => {
         event.preventDefault();
 
-        const newUser = {
-            userName,
-            userSecName,
-            userPosition,
-            userCompany,
-            userEmail,
-            userPhone,
-            userDescription
-        };
+        if(formIsValid) {
+            setUsers([...users, newUser]);
 
-        setUsers([...users, newUser]);
-
-        clearResume();
+            clearResume();
+        }
     }, [users, setUsers,
         clearResume,
-        userName,
-        userSecName,
-        userPosition,
-        userCompany,
-        userEmail,
-        userPhone,
-        userDescription]);
+        newUser,
+        formIsValid
+    ]);
 
     return (
         <div className={styles.footer}>
@@ -57,6 +40,7 @@ const ResumeFooter = (props) => {
             <Button
                 type="submit"
                 onClick={saveResume}
+                isDisabled={!formIsValid}
             >
                 Зберегти
             </Button>

@@ -1,4 +1,4 @@
-import { AccountProvider } from "../entities/resume/model/AccountContext";
+import { AccountProvider } from "../entities/account/model/AccountContext";
 import Account from "../widgets/Account/Account";
 import './styles';
 

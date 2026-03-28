@@ -23,7 +23,27 @@ export const AccountProvider = (props) => {
         userCompany, setUserCompany,
         userEmail, setUserEmail,
         userPhone, setUserPhone,
-        userDescription, setUserDescription
+        userDescription, setUserDescription,
+
+        newUser,
+
+        formIsValid,
+
+        errorName,
+        errorSecName,
+        errorPosition,
+        errorCompany,
+        errorEmail,
+        errorPhone,
+        errorDescription,
+
+        onInputName,
+        onInputSecName,
+        onInputPosition,
+        onInputCompany,
+        onInputEmail,
+        onInputPhone,
+        onInputDescription
     } = useAccountInputs();
 
     const value = useMemo(() => ({
@@ -38,6 +58,26 @@ export const AccountProvider = (props) => {
         userPhone, setUserPhone,
         userDescription, setUserDescription,
 
+        newUser,
+
+        formIsValid,
+
+        errorName,
+        errorSecName,
+        errorPosition,
+        errorCompany,
+        errorEmail,
+        errorPhone,
+        errorDescription,
+
+        onInputName,
+        onInputSecName,
+        onInputPosition,
+        onInputCompany,
+        onInputEmail,
+        onInputPhone,
+        onInputDescription,
+
         nameInputRef
     }), [
         users, setUsers,
@@ -50,6 +90,26 @@ export const AccountProvider = (props) => {
         userEmail, setUserEmail,
         userPhone, setUserPhone,
         userDescription, setUserDescription,
+
+        newUser,
+        
+        formIsValid,
+
+        errorName,
+        errorSecName,
+        errorPosition,
+        errorCompany,
+        errorEmail,
+        errorPhone,
+        errorDescription,
+
+        onInputName,
+        onInputSecName,
+        onInputPosition,
+        onInputCompany,
+        onInputEmail,
+        onInputPhone,
+        onInputDescription,
 
         nameInputRef
     ]);
