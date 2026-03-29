@@ -6,26 +6,20 @@ const ResumeFooter = (props) => {
     const {styles} = props;
 
     const {
-        users, setUsers,
         clearResume,
+        saveUser,
+        writeUsers,
         newUser,
         formIsValid
     } = useContext(AccountContext);
-
-    const writeUsers = useCallback(() => {
-        console.log(localStorage.getItem('users'));
-    }, []);
 
     const saveResume = useCallback((event) => {
         event.preventDefault();
 
         if(formIsValid) {
-            setUsers([...users, newUser]);
-
-            clearResume();
+            saveUser(newUser, () => clearResume());
         }
-    }, [users, setUsers,
-        clearResume,
+    }, [clearResume,
         newUser,
         formIsValid
     ]);
