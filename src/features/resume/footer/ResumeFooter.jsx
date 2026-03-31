@@ -1,6 +1,7 @@
 import { useCallback, useContext } from "react";
 import Button from "../../../shared/ui/Button/Button";
 import { AccountContext } from "../../../entities/account/model/AccountContext";
+import Select from "../../../entities/account/ui/Select/Select";
 
 const ResumeFooter = (props) => {
     const {styles} = props;
@@ -8,7 +9,6 @@ const ResumeFooter = (props) => {
     const {
         clearResume,
         saveUser,
-        writeUsers,
         newUser,
         formIsValid
     } = useContext(AccountContext);
@@ -26,11 +26,9 @@ const ResumeFooter = (props) => {
 
     return (
         <div className={styles.footer}>
-            <Button
-                onClick={writeUsers}
-            >
-                Вивести готові резюме
-            </Button>
+            <Select>
+                Вибрати готове резюме
+            </Select>
             <Button
                 type="submit"
                 onClick={saveResume}

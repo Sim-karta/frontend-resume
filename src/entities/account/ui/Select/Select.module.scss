@@ -1,0 +1,31 @@
+.select {
+    position: relative;
+}
+
+.list {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    background-color: var(--color-white);
+    border: var(--border);
+    border-radius: rem(5);
+    overflow: hidden;
+}
+
+.item {
+    display: flex;
+}
+
+.option {
+    display: flex;
+    width: 100%;
+    padding: rem(12);
+    background-color: transparent;
+    color: var(--color-black);
+    border: none;
+
+    &:hover {
+        background-color: var(--color-gray-1);
+    }
+}

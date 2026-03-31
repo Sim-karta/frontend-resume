@@ -10,9 +10,15 @@ const Button = (props) => {
         onClick
     } = props;
 
+    let style = className;
+
+    if (!className) {
+        style = styles.button;
+    }
+
     return (
         <button
-            className={`${styles.button} ${className}`}
+            className={style}
             type={type}
             disabled={isDisabled}
             onClick={onClick}
