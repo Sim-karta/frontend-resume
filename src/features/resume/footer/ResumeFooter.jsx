@@ -7,10 +7,19 @@ const ResumeFooter = (props) => {
     const {styles} = props;
 
     const {
+        users,
+        setUserName,
+        setUserSecName,
+        setUserPosition,
+        setUserCompany,
+        setUserEmail,
+        setUserPhone,
+        setUserDescription,
         clearResume,
         saveUser,
         newUser,
-        formIsValid
+        formIsValid,
+        clearErrors
     } = useContext(AccountContext);
 
     const saveResume = useCallback((event) => {
@@ -24,9 +33,26 @@ const ResumeFooter = (props) => {
         formIsValid
     ]);
 
+    const onClickOption = useCallback((index) => {
+        const user = users[index];
+
+        setUserName(user.userName);
+        setUserSecName(user.userSecName);
+        setUserPosition(user.userPosition);
+        setUserCompany(user.userCompany);
+        setUserEmail(user.userEmail);
+        setUserPhone(user.userPhone);
+        setUserDescription(user.userDescription);
+
+        clearErrors();
+    }, [users]);
+
     return (
         <div className={styles.footer}>
-            <Select>
+            <Select
+                items={users}
+                onClickOption={onClickOption}
+            >
                 Вибрати готове резюме
             </Select>
             <Button

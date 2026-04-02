@@ -1,41 +1,19 @@
 import { memo, useCallback, useContext, useState } from 'react';
 import styles from './Select.module.scss'
 import Button from '../../../../shared/ui/Button/Button';
-import { AccountContext } from '../../model/AccountContext';
 
 const Select = (props) => {
     const {
-        children
+        children,
+        items,
+        onClickOption
     } = props;
-
-    const {
-        users,
-        setUserName,
-        setUserSecName,
-        setUserPosition,
-        setUserCompany,
-        setUserEmail,
-        setUserPhone,
-        setUserDescription
-    } = useContext(AccountContext);
 
     const [isOpen, setIsOpen] = useState(false);
 
     const onClickHeader = useCallback(() => {
         setIsOpen(!isOpen);
     }, [isOpen]);
-
-    const onClickOption = useCallback((index) => {
-        const user = users[index];
-
-        setUserName(user.userName);
-        setUserSecName(user.userSecName);
-        setUserPosition(user.userPosition);
-        setUserCompany(user.userCompany);
-        setUserEmail(user.userEmail);
-        setUserPhone(user.userPhone);
-        setUserDescription(user.userDescription);
-    }, [users]);
 
     return (
         <div className={styles.select}>
@@ -47,16 +25,19 @@ const Select = (props) => {
             </Button>
             {isOpen && (
                 <ul className={styles.list}>
-                    {users.map((user, index) => (
+                    {items.map((item, index) => (
                         <li 
                             className={styles.item}
                             key={index}
                         >
                             <Button
                                 className={styles.option}
-                                onClick={() => onClickOption(index)}
+                                onClick={() => {
+                                    onClickOption(index);
+                                    setIsOpen(false);
+                                }}
                             >
-                                {user.userName}
+                                {item[Object.keys(item)[0]]}
                             </Button>
                         </li>
                     ))}

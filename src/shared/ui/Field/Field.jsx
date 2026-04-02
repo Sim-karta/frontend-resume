@@ -8,7 +8,8 @@ const Field = (props) => {
         label,
         placeholder,
         value,
-        onInput,
+        onInput = () => {},
+        onBlur = () => {},
         error,
         ref
     } = props;
@@ -28,6 +29,7 @@ const Field = (props) => {
                 autoComplete="off"
                 value={value}
                 onInput={( {target} ) => onInput(target.value)}
+                onBlur={( {target} ) => onBlur(target.value)}
                 ref={ref}
             />
             {error && (

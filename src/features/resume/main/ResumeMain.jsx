@@ -6,13 +6,13 @@ const ResumeMain = (props) => {
     const {styles} = props;
 
     const {
-        userName,
-        userSecName,
-        userPosition,
-        userCompany,
-        userEmail,
-        userPhone,
-        userDescription,
+        userName, setUserName,
+        userSecName, setUserSecName,
+        userPosition, setUserPosition,
+        userCompany, setUserCompany,
+        userEmail, setUserEmail,
+        userPhone, setUserPhone,
+        userDescription, setUserDescription,
 
         errorName,
         errorSecName,
@@ -22,13 +22,13 @@ const ResumeMain = (props) => {
         errorPhone,
         errorDescription,
 
-        onInputName,
-        onInputSecName,
-        onInputPosition,
-        onInputCompany,
-        onInputEmail,
-        onInputPhone,
-        onInputDescription,
+        validName,
+        validSecName,
+        validPosition,
+        validCompany,
+        validEmail,
+        validPhone,
+        validDescription,
 
         nameInputRef
     } = useContext(AccountContext);
@@ -41,7 +41,8 @@ const ResumeMain = (props) => {
                 label="Ім'я"
                 placeholder="Василь"
                 value={userName}
-                onInput={onInputName}
+                onInput={setUserName}
+                onBlur={validName}
                 error={errorName}
                 ref={nameInputRef}
             />
@@ -51,7 +52,8 @@ const ResumeMain = (props) => {
                 label="Прізвище"
                 placeholder="Пупкін"
                 value={userSecName}
-                onInput={onInputSecName}
+                onInput={setUserSecName}
+                onBlur={validSecName}
                 error={errorSecName}
             />
             <Field 
@@ -60,7 +62,8 @@ const ResumeMain = (props) => {
                 label="Посада"
                 placeholder="Менеджер роздрібного продажу"
                 value={userPosition}
-                onInput={onInputPosition}
+                onInput={setUserPosition}
+                onBlur={validPosition}
                 error={errorPosition}
             />
             <Field 
@@ -69,7 +72,8 @@ const ResumeMain = (props) => {
                 label="Компанія"
                 placeholder="Майкрософт"
                 value={userCompany}
-                onInput={onInputCompany}
+                onInput={setUserCompany}
+                onBlur={validCompany}
                 error={errorCompany}
             />
             <Field 
@@ -78,7 +82,8 @@ const ResumeMain = (props) => {
                 label="Електрона пошта"
                 placeholder="example@gmail.com"
                 value={userEmail}
-                onInput={onInputEmail}
+                onInput={setUserEmail}
+                onBlur={validEmail}
                 error={errorEmail}
             />
             <Field 
@@ -87,7 +92,8 @@ const ResumeMain = (props) => {
                 label="Телефон"
                 placeholder="+38(012)-345-6789"
                 value={userPhone}
-                onInput={onInputPhone}
+                onInput={setUserPhone}
+                onBlur={validPhone}
                 error={errorPhone}
             />
             <Field 
@@ -95,7 +101,8 @@ const ResumeMain = (props) => {
                 id="description"
                 label="Опис"
                 value={userDescription}
-                onInput={onInputDescription}
+                onInput={setUserDescription}
+                onBlur={validDescription}
                 error={errorDescription}
             />
         </div>

@@ -5,7 +5,8 @@ const ResumeHeader = (props) => {
     const {styles} = props;
 
     const {
-        clearResume
+        clearResume,
+        clearErrors
     } = useContext(AccountContext);
 
     const onButtonClick = useCallback(() => {
@@ -13,6 +14,7 @@ const ResumeHeader = (props) => {
 
         if(isConfirm) {
             clearResume();
+            clearErrors();
         }        
     }, []);
 

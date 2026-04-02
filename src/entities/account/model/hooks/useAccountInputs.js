@@ -37,119 +37,106 @@ const useAccountInputs = () => {
     const [errorPhone, setErrorPhone] = useState('');
     const [errorDescription, setErrorDescription] = useState('');
 
-    const onInputName = useCallback((value) => {
-        let errorMessage = '';
+    const clearErrors = useCallback(() => {
+        setErrorName('');
+        setErrorSecName('');
+        setErrorPosition('');
+        setErrorCompany('');
+        setErrorEmail('');
+        setErrorPhone('');
+        setErrorDescription('');
+    }, []);
 
+    const isErrorText = (value) => {
         const clearValue = value.trim();
         const hasOnlySpaces = clearValue.length === 0 && value.length > 0;
 
         if (hasOnlySpaces) {
-            errorMessage = "Поле не повинно бути пустим"
+            return "Поле не повинно бути пустим";
         }
 
-        setUserName(value);
-        setErrorName(errorMessage);
-    }, []);
+        return '';
+    }
 
-    const onInputSecName = useCallback((value) => {
-        let errorMessage = '';
-
-        const clearValue = value.trim();
-        const hasOnlySpaces = clearValue.length === 0 && value.length > 0;
-
-        if (hasOnlySpaces) {
-            errorMessage = "Поле не повинно бути пустим"
-        }
-
-        setUserSecName(value);
-        setErrorSecName(errorMessage);
-    }, []);
-
-    const onInputPosition = useCallback((value) => {
-        let errorMessage = '';
-
-        const clearValue = value.trim();
-        const hasOnlySpaces = clearValue.length === 0 && value.length > 0;
-
-        if (hasOnlySpaces) {
-            errorMessage = "Поле не повинно бути пустим"
-        }
-
-        setUserPosition(value);
-        setErrorPosition(errorMessage);
-    }, []);
-
-    const onInputCompany = useCallback((value) => {
-        let errorMessage = '';
-
-        const clearValue = value.trim();
-        const hasOnlySpaces = clearValue.length === 0 && value.length > 0;
-
-        if (hasOnlySpaces) {
-            errorMessage = "Поле не повинно бути пустим"
-        }
-
-        setUserCompany(value);
-        setErrorCompany(errorMessage);
-    }, []);
-
-    const onInputEmail = useCallback((value) => {
-        let errorMessage = '';
-
+    const isErrorEmail = (value) => {
         const clearValue = value.trim();
         const hasOnlySpaces = clearValue.length === 0 && value.length > 0;
 
         const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-        if (!regex.test(clearValue)) {
-            errorMessage = "Введіть корректну адресу"
-        } else if (hasOnlySpaces) {
-            errorMessage = "Поле не повинно бути пустим"
+        if (hasOnlySpaces) {
+            return "Поле не повинно бути пустим";
+        } else if (!regex.test(clearValue)) {
+            return "Введіть корректну адресу";
         }
 
-        setUserEmail(value);
-        setErrorEmail(errorMessage);
-    }, []);
+        return '';
+    }
 
-    const onInputPhone = useCallback((value) => {
-        let errorMessage = '';
-
+    const isErrorPhone = (value) => {
         const clearValue = value.trim();
         const hasOnlySpaces = clearValue.length === 0 && value.length > 0;
 
         const regex = /^(\+?\d{1,3})?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
-        if (!regex.test(clearValue)) {
-            errorMessage = "Введіть корректний телефон"
-        } else if (hasOnlySpaces) {
-            errorMessage = "Поле не повинно бути пустим"
+        if (hasOnlySpaces) {
+            return "Поле не повинно бути пустим";
+        } else if (!regex.test(clearValue)) {
+            return "Введіть корректний телефон";
         }
 
-        setUserPhone(value);
+        return '';
+    }
+
+    const validName = useCallback((value) => {
+        const errorMessage = isErrorText(value);
+
+        setErrorName(errorMessage);
+    }, []);
+
+    const validSecName = useCallback((value) => {
+        const errorMessage = isErrorText(value);
+
+        setErrorSecName(errorMessage);
+    }, []);
+
+    const validPosition = useCallback((value) => {
+        const errorMessage = isErrorText(value);
+
+        setErrorPosition(errorMessage);
+    }, []);
+
+    const validCompany = useCallback((value) => {
+        const errorMessage = isErrorText(value);
+
+        setErrorCompany(errorMessage);
+    }, []);
+
+    const validEmail = useCallback((value) => {
+        const errorMessage = isErrorEmail(value);
+
+        setErrorEmail(errorMessage);
+    }, []);
+
+    const validPhone = useCallback((value) => {
+        const errorMessage = isErrorPhone(value);
+
         setErrorPhone(errorMessage);
     }, []);
 
-    const onInputDescription = useCallback((value) => {
-        let errorMessage = '';
+    const validDescription = useCallback((value) => {
+        const errorMessage = isErrorText(value);
 
-        const clearValue = value.trim();
-        const hasOnlySpaces = clearValue.length === 0 && value.length > 0;
-
-        if (hasOnlySpaces) {
-            errorMessage = "Поле не повинно бути пустим"
-        }
-
-        setUserDescription(value);
         setErrorDescription(errorMessage);
     }, []);
 
     const formIsValid = useMemo(() => {
         if (
-            (errorName.length === 0 && userName.length > 0) &&
-            (errorSecName.length === 0 && userSecName.length > 0) &&
-            (errorPosition.length === 0 && userPosition.length > 0) &&
-            (errorCompany.length === 0 && userCompany.length > 0) &&
-            (errorEmail.length === 0 && userEmail.length > 0) &&
-            (errorPhone.length === 0 && userPhone.length > 0) &&
-            (errorDescription.length === 0 && userDescription.length > 0)
+            (!isErrorText(userName) && userName.length > 0) &&
+            (!isErrorText(userSecName) && userSecName.length > 0) &&
+            (!isErrorText(userPosition) && userPosition.length > 0) &&
+            (!isErrorText(userCompany) && userCompany.length > 0) &&
+            (!isErrorEmail(userEmail) && userEmail.length > 0) &&
+            (!isErrorPhone(userPhone) && userPhone.length > 0) &&
+            (!isErrorText(userDescription) && userDescription.length > 0)
         ) {
             setNewUser({
                 userName,
@@ -180,14 +167,6 @@ const useAccountInputs = () => {
         errorEmail,
         errorPhone,
         errorDescription,
-
-        onInputName,
-        onInputSecName,
-        onInputPosition,
-        onInputCompany,
-        onInputEmail,
-        onInputPhone,
-        onInputDescription
     ]);
 
     return {
@@ -213,13 +192,15 @@ const useAccountInputs = () => {
         errorPhone,
         errorDescription,
 
-        onInputName,
-        onInputSecName,
-        onInputPosition,
-        onInputCompany,
-        onInputEmail,
-        onInputPhone,
-        onInputDescription
+        clearErrors,
+
+        validName,
+        validSecName,
+        validPosition,
+        validCompany,
+        validEmail,
+        validPhone,
+        validDescription
     }
 }
 
