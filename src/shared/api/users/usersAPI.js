@@ -16,6 +16,15 @@ const usersAPI = {
             body: JSON.stringify(user),
         })
             .then((response) => response.json())
+    },
+
+    change: (id, user) => {
+        return fetch(`${URL}/${id}`, {
+            method: 'PATCH',
+            headers,
+            body: JSON.stringify(user),
+        })
+            .then((response) => response.json())
     }
 }
 

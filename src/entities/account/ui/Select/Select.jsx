@@ -6,7 +6,8 @@ const Select = (props) => {
     const {
         children,
         items,
-        onClickOption
+        onClickOption,
+        activeOption
     } = props;
 
     const [isOpen, setIsOpen] = useState(false);
@@ -36,6 +37,7 @@ const Select = (props) => {
                                     onClickOption(index);
                                     setIsOpen(false);
                                 }}
+                                isDisabled={item.id == activeOption}
                             >
                                 {item[Object.keys(item)[0]]}
                             </Button>

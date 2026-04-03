@@ -4,6 +4,8 @@ import usersAPI from "../../../../shared/api/users/usersAPI";
 const useAccount = () => {
     const [users, setUsers] = useState([]);
 
+    const [activeUser, setActiveUser] = useState(-1);
+
     const nameInputRef = useRef(null);
 
     const saveUser = useCallback((newUser, callbackAfterAdding) => {
@@ -13,12 +15,18 @@ const useAccount = () => {
                 callbackAfterAdding();
                 nameInputRef.current.focus();
             });
-
     }, [users]);
 
-    const writeUsers = useCallback(() => {
-        console.log(users);
-    }, [users]);
+    const changeUser = useCallback((newUser, callbackAfterAdding) => {
+        usersAPI.change(activeUser, newUser)
+            .then((addedUser) => {
+                setUsers([...users.filter((user) => {
+                    return user.id != activeUser;
+                }), addedUser]);
+                callbackAfterAdding();
+                nameInputRef.current.focus();
+            });
+    }, [users, activeUser]);
 
     useEffect(() => {
         nameInputRef.current.focus();
@@ -29,8 +37,10 @@ const useAccount = () => {
     return {
         users, setUsers,
 
+        activeUser, setActiveUser,
+
         saveUser,
-        writeUsers,
+        changeUser,
 
         nameInputRef
     }

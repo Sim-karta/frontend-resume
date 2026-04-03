@@ -11,8 +11,10 @@ export const AccountProvider = (props) => {
     const {
         users, setUsers,
 
+        activeUser, setActiveUser,
+
         saveUser,
-        writeUsers,
+        changeUser,
 
         nameInputRef
     } = useAccount();
@@ -53,9 +55,10 @@ export const AccountProvider = (props) => {
 
     const value = useMemo(() => ({
         users, setUsers,
+        activeUser, setActiveUser,
         clearResume,
         saveUser,
-        writeUsers,
+        changeUser,
 
         userName, setUserName,
         userSecName, setUserSecName,
@@ -90,9 +93,10 @@ export const AccountProvider = (props) => {
         nameInputRef
     }), [
         users, setUsers,
+        activeUser, setActiveUser,
         clearResume,
         saveUser,
-        writeUsers,
+        changeUser,
 
         userName, setUserName,
         userSecName, setUserSecName,

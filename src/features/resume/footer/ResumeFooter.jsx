@@ -8,6 +8,7 @@ const ResumeFooter = (props) => {
 
     const {
         users,
+        activeUser, setActiveUser,
         setUserName,
         setUserSecName,
         setUserPosition,
@@ -17,6 +18,7 @@ const ResumeFooter = (props) => {
         setUserDescription,
         clearResume,
         saveUser,
+        changeUser,
         newUser,
         formIsValid,
         clearErrors
@@ -26,7 +28,11 @@ const ResumeFooter = (props) => {
         event.preventDefault();
 
         if(formIsValid) {
-            saveUser(newUser, () => clearResume());
+            if(activeUser === -1) {
+                saveUser(newUser, () => clearResume());
+            } else {
+                changeUser(newUser, () => clearResume())
+            }
         }
     }, [clearResume,
         newUser,
@@ -35,6 +41,8 @@ const ResumeFooter = (props) => {
 
     const onClickOption = useCallback((index) => {
         const user = users[index];
+
+        setActiveUser(user.id);
 
         setUserName(user.userName);
         setUserSecName(user.userSecName);
@@ -52,6 +60,7 @@ const ResumeFooter = (props) => {
             <Select
                 items={users}
                 onClickOption={onClickOption}
+                activeOption={activeUser}
             >
                 Вибрати готове резюме
             </Select>

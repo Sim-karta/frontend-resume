@@ -27,6 +27,8 @@ const useAccountInputs = () => {
         setUserEmail('');
         setUserPhone('');
         setUserDescription('');
+
+        setActiveUser(-1);
     }, []);
 
     const [errorName, setErrorName] = useState('');
