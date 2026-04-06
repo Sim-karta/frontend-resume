@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
 
 const useAccountInputs = () => {
+    const [userPhoto, setUserPhoto] = useState('');
     const [userName, setUserName] = useState('');
     const [userSecName, setUserSecName] = useState('');
     const [userPosition, setUserPosition] = useState('');
@@ -10,6 +11,7 @@ const useAccountInputs = () => {
     const [userDescription, setUserDescription] = useState('');
 
     const [newUser, setNewUser] = useState({
+        userPhoto: '',
         userName: '',
         userSecName: '',
         userPosition: '',
@@ -20,6 +22,7 @@ const useAccountInputs = () => {
     });
 
     const clearResume = useCallback(() => {
+        setUserPhoto('');
         setUserName('');
         setUserSecName('');
         setUserPosition('');
@@ -27,8 +30,21 @@ const useAccountInputs = () => {
         setUserEmail('');
         setUserPhone('');
         setUserDescription('');
+    }, []);
 
-        setActiveUser(-1);
+    const handleFileChange = useCallback((event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            const photoString = reader.result;
+
+            setUserPhoto(photoString);
+        }
+        
+        if (file) {
+            reader.readAsDataURL(file);
+        }
     }, []);
 
     const [errorName, setErrorName] = useState('');
@@ -141,6 +157,7 @@ const useAccountInputs = () => {
             (!isErrorText(userDescription) && userDescription.length > 0)
         ) {
             setNewUser({
+                userPhoto,
                 userName,
                 userSecName,
                 userPosition,
@@ -154,6 +171,7 @@ const useAccountInputs = () => {
             return false;
         }
     }, [
+        userPhoto,
         userName,
         userSecName,
         userPosition,
@@ -174,6 +192,7 @@ const useAccountInputs = () => {
     return {
         clearResume,
 
+        userPhoto, setUserPhoto,
         userName, setUserName,
         userSecName, setUserSecName,
         userPosition, setUserPosition,
@@ -183,6 +202,8 @@ const useAccountInputs = () => {
         userDescription, setUserDescription,
 
         newUser, setNewUser,
+
+        handleFileChange,
 
         formIsValid,
 

@@ -16,12 +16,14 @@ export const AccountProvider = (props) => {
         saveUser,
         changeUser,
 
-        nameInputRef
+        nameInputRef,
+        fileInputRef
     } = useAccount();
 
     const {
         clearResume,
 
+        userPhoto, setUserPhoto,
         userName, setUserName,
         userSecName, setUserSecName,
         userPosition, setUserPosition,
@@ -31,6 +33,8 @@ export const AccountProvider = (props) => {
         userDescription, setUserDescription,
 
         newUser,
+
+        handleFileChange,
 
         formIsValid,
 
@@ -60,6 +64,7 @@ export const AccountProvider = (props) => {
         saveUser,
         changeUser,
 
+        userPhoto, setUserPhoto,
         userName, setUserName,
         userSecName, setUserSecName,
         userPosition, setUserPosition,
@@ -69,6 +74,8 @@ export const AccountProvider = (props) => {
         userDescription, setUserDescription,
 
         newUser,
+
+        handleFileChange,
 
         formIsValid,
 
@@ -90,7 +97,8 @@ export const AccountProvider = (props) => {
         validPhone,
         validDescription,
 
-        nameInputRef
+        nameInputRef,
+        fileInputRef
     }), [
         users, setUsers,
         activeUser, setActiveUser,
@@ -98,6 +106,7 @@ export const AccountProvider = (props) => {
         saveUser,
         changeUser,
 
+        userPhoto, setUserPhoto,
         userName, setUserName,
         userSecName, setUserSecName,
         userPosition, setUserPosition,
@@ -107,6 +116,8 @@ export const AccountProvider = (props) => {
         userDescription, setUserDescription,
 
         newUser,
+
+        handleFileChange,
         
         formIsValid,
 
@@ -128,7 +139,8 @@ export const AccountProvider = (props) => {
         validPhone,
         validDescription,
 
-        nameInputRef
+        nameInputRef,
+        fileInputRef
     ]);
 
     return (

@@ -6,7 +6,8 @@ const ResumeHeader = (props) => {
 
     const {
         clearResume,
-        clearErrors
+        clearErrors,
+        setActiveUser
     } = useContext(AccountContext);
 
     const onButtonClick = useCallback(() => {
@@ -14,6 +15,7 @@ const ResumeHeader = (props) => {
 
         if(isConfirm) {
             clearResume();
+            setActiveUser();
             clearErrors();
         }        
     }, []);

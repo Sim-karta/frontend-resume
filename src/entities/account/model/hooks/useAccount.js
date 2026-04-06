@@ -7,6 +7,7 @@ const useAccount = () => {
     const [activeUser, setActiveUser] = useState(-1);
 
     const nameInputRef = useRef(null);
+    const fileInputRef = useRef(null);
 
     const saveUser = useCallback((newUser, callbackAfterAdding) => {
         usersAPI.add(newUser)
@@ -42,7 +43,8 @@ const useAccount = () => {
         saveUser,
         changeUser,
 
-        nameInputRef
+        nameInputRef,
+        fileInputRef
     }
 }
 

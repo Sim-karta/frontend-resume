@@ -6,9 +6,14 @@ const ProfileHeader = (props) => {
     const { styles } = props;
 
     const {
+        userPhoto,
         userName,
         userSecName
     } = useContext(AccountContext);
+
+    const photo = useMemo(() => {
+        return userPhoto.trim() === '' ? myImage : userPhoto;
+    }, [userPhoto]);
 
     const name = useMemo(() => {
         return userName.trim() === '' ? "Ім'я" : userName;
@@ -21,7 +26,7 @@ const ProfileHeader = (props) => {
     return (
         <div className={styles.header}>
             <img 
-                src={myImage} 
+                src={photo} 
                 className={styles.avatar}
                 width="100" 
             />

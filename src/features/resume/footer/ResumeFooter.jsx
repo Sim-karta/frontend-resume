@@ -9,6 +9,7 @@ const ResumeFooter = (props) => {
     const {
         users,
         activeUser, setActiveUser,
+        setUserPhoto,
         setUserName,
         setUserSecName,
         setUserPosition,
@@ -31,7 +32,8 @@ const ResumeFooter = (props) => {
             if(activeUser === -1) {
                 saveUser(newUser, () => clearResume());
             } else {
-                changeUser(newUser, () => clearResume())
+                changeUser(newUser, () => clearResume());
+                setActiveUser(-1);
             }
         }
     }, [clearResume,
@@ -44,6 +46,7 @@ const ResumeFooter = (props) => {
 
         setActiveUser(user.id);
 
+        setUserPhoto(user.userPhoto);
         setUserName(user.userName);
         setUserSecName(user.userSecName);
         setUserPosition(user.userPosition);

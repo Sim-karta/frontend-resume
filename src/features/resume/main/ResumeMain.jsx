@@ -1,6 +1,7 @@
-import { memo, useCallback, useContext } from "react";
+import { memo, useCallback, useContext, useRef } from "react";
 import Field from "../../../shared/ui/Field/Field"
 import { AccountContext } from "../../../entities/account/model/AccountContext";
+import Button from "../../../shared/ui/Button/Button";
 
 const ResumeMain = (props) => {
     const {styles} = props;
@@ -13,6 +14,8 @@ const ResumeMain = (props) => {
         userEmail, setUserEmail,
         userPhone, setUserPhone,
         userDescription, setUserDescription,
+
+        handleFileChange,
 
         errorName,
         errorSecName,
@@ -30,8 +33,13 @@ const ResumeMain = (props) => {
         validPhone,
         validDescription,
 
-        nameInputRef
-    } = useContext(AccountContext);
+        nameInputRef,
+        fileInputRef
+    } = useContext(AccountContext);    
+
+    const uploadPhoto = useCallback(() => {
+        fileInputRef.current.click();
+    }, [fileInputRef]);
 
     return (
         <div className={styles.main}>
@@ -104,6 +112,18 @@ const ResumeMain = (props) => {
                 onInput={setUserDescription}
                 onBlur={validDescription}
                 error={errorDescription}
+            />
+            <Button
+                onClick={uploadPhoto}
+            >
+                Завантажити фото
+            </Button>
+            <input 
+                className="visually-hidden"
+                type="file" 
+                onChange={handleFileChange}
+                accept="image/*" 
+                ref={fileInputRef}
             />
         </div>
     )
