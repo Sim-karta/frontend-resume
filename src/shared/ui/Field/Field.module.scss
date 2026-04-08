@@ -25,3 +25,13 @@
     color: red;
     font-size: rem(10);
 }
+
+.hiddenInput {
+    .input {
+        @include visually-hidden;
+    }
+
+    .error {
+        top: calc(100% - var(--input-height) / 2);
+    }
+}

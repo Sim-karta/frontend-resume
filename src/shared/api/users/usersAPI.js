@@ -25,6 +25,7 @@ const usersAPI = {
             body: JSON.stringify(user),
         })
             .then((response) => response.json())
+            
     }
 }
 

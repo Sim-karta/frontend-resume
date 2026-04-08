@@ -4,18 +4,21 @@ import styles from './Field.module.scss'
 const Field = (props) => {
     const {
         className = '',
+        type = 'text',
         id,
         label,
         placeholder,
         value,
         onInput = () => {},
         onBlur = () => {},
-        error,
+        onChange = () => {},
+        accept = '',
+        error = '',
         ref
     } = props;
 
     return (
-        <div className={`${styles.field} ${className}`}>
+        <div className={`${styles.field} ${className == 'hidden' ? styles.hiddenInput : className}`}>
             <label
                 className="field__label"
                 htmlFor={id}
@@ -24,12 +27,15 @@ const Field = (props) => {
             </label>
             <input 
                 className={`${styles.input} ${error ? styles.isInvalid : ''}`}
+                type={type}
                 id={id}
                 placeholder={placeholder}
                 autoComplete="off"
                 value={value}
                 onInput={( {target} ) => onInput(target.value)}
                 onBlur={( {target} ) => onBlur(target.value)}
+                onChange={( {target} ) => onChange(target)}
+                accept={accept}
                 ref={ref}
             />
             {error && (

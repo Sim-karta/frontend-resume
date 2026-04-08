@@ -28,7 +28,6 @@ const ProfileHeader = (props) => {
             <img 
                 src={photo} 
                 className={styles.avatar}
-                width="100" 
             />
             <div className={styles.name}>
                 <p>{name}</p>

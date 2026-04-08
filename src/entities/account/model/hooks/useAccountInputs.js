@@ -32,21 +32,7 @@ const useAccountInputs = () => {
         setUserDescription('');
     }, []);
 
-    const handleFileChange = useCallback((event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-
-        reader.onload = () => {
-            const photoString = reader.result;
-
-            setUserPhoto(photoString);
-        }
-        
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    }, []);
-
+    const [errorPhoto, setErrorPhoto] = useState('');
     const [errorName, setErrorName] = useState('');
     const [errorSecName, setErrorSecName] = useState('');
     const [errorPosition, setErrorPosition] = useState('');
@@ -64,6 +50,16 @@ const useAccountInputs = () => {
         setErrorPhone('');
         setErrorDescription('');
     }, []);
+
+    const isErrorPhoto = (value) => {
+        const sizeInBytes = new Blob([value]).size;
+
+        if (value && (sizeInBytes / (1024 * 1024)) > 0.07) {
+            return "Файл занадто великий! Максимум 0.07 МБ";
+        }
+
+        return '';
+    }
 
     const isErrorText = (value) => {
         const clearValue = value.trim();
@@ -104,50 +100,121 @@ const useAccountInputs = () => {
         return '';
     }
 
+    const validPhoto = useCallback((value) => {
+        const errorMessage = isErrorPhoto(value);
+        setErrorPhoto(errorMessage);
+
+        if (errorMessage == '') {
+            return true;
+        } else {
+            return false;
+        }
+    }, []);
+
     const validName = useCallback((value) => {
         const errorMessage = isErrorText(value);
 
         setErrorName(errorMessage);
+
+        if (errorMessage == '') {
+            return true;
+        } else {
+            return false;
+        }
     }, []);
 
     const validSecName = useCallback((value) => {
         const errorMessage = isErrorText(value);
 
         setErrorSecName(errorMessage);
+
+        if (errorMessage == '') {
+            return true;
+        } else {
+            return false;
+        }
     }, []);
 
     const validPosition = useCallback((value) => {
         const errorMessage = isErrorText(value);
 
         setErrorPosition(errorMessage);
+
+        if (errorMessage == '') {
+            return true;
+        } else {
+            return false;
+        }
     }, []);
 
     const validCompany = useCallback((value) => {
         const errorMessage = isErrorText(value);
 
         setErrorCompany(errorMessage);
+
+        if (errorMessage == '') {
+            return true;
+        } else {
+            return false;
+        }
     }, []);
 
     const validEmail = useCallback((value) => {
         const errorMessage = isErrorEmail(value);
 
         setErrorEmail(errorMessage);
+
+        if (errorMessage == '') {
+            return true;
+        } else {
+            return false;
+        }
     }, []);
 
     const validPhone = useCallback((value) => {
         const errorMessage = isErrorPhone(value);
 
         setErrorPhone(errorMessage);
+
+        if (errorMessage == '') {
+            return true;
+        } else {
+            return false;
+        }
     }, []);
 
     const validDescription = useCallback((value) => {
         const errorMessage = isErrorText(value);
 
         setErrorDescription(errorMessage);
+
+        if (errorMessage == '') {
+            return true;
+        } else {
+            return false;
+        }
+    }, []);
+
+    const handleFileChange = useCallback((target) => {
+        const file = target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            const photoString = reader.result;
+
+            if (validPhoto(photoString)) {
+                setUserPhoto(photoString);
+            }            
+        }
+        
+        if (file) {
+            reader.readAsDataURL(file);
+        }
     }, []);
 
     const formIsValid = useMemo(() => {
         if (
+            (!isErrorPhoto(userPhoto)) &&
             (!isErrorText(userName) && userName.length > 0) &&
             (!isErrorText(userSecName) && userSecName.length > 0) &&
             (!isErrorText(userPosition) && userPosition.length > 0) &&
@@ -157,14 +224,14 @@ const useAccountInputs = () => {
             (!isErrorText(userDescription) && userDescription.length > 0)
         ) {
             setNewUser({
-                userPhoto,
                 userName,
                 userSecName,
                 userPosition,
                 userCompany,
                 userEmail,
                 userPhone,
-                userDescription
+                userDescription,
+                userPhoto
             })
             return true;
         } else {
@@ -180,6 +247,7 @@ const useAccountInputs = () => {
         userPhone,
         userDescription,
 
+        errorPhoto,
         errorName,
         errorSecName,
         errorPosition,
@@ -207,6 +275,7 @@ const useAccountInputs = () => {
 
         formIsValid,
 
+        errorPhoto,
         errorName,
         errorSecName,
         errorPosition,
@@ -217,6 +286,7 @@ const useAccountInputs = () => {
 
         clearErrors,
 
+        validPhoto,
         validName,
         validSecName,
         validPosition,

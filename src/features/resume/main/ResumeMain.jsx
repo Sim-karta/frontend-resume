@@ -17,6 +17,7 @@ const ResumeMain = (props) => {
 
         handleFileChange,
 
+        errorPhoto,
         errorName,
         errorSecName,
         errorPosition,
@@ -118,13 +119,17 @@ const ResumeMain = (props) => {
             >
                 Завантажити фото
             </Button>
-            <input 
-                className="visually-hidden"
+            <Field
+                className="hidden"
                 type="file" 
+                id="photo"
+                label=""
+                value=""
                 onChange={handleFileChange}
                 accept="image/*" 
+                error={errorPhoto}
                 ref={fileInputRef}
-            />
+            />          
         </div>
     )
 }

@@ -38,6 +38,7 @@ export const AccountProvider = (props) => {
 
         formIsValid,
 
+        errorPhoto,
         errorName,
         errorSecName,
         errorPosition,
@@ -79,6 +80,7 @@ export const AccountProvider = (props) => {
 
         formIsValid,
 
+        errorPhoto,
         errorName,
         errorSecName,
         errorPosition,
@@ -121,6 +123,7 @@ export const AccountProvider = (props) => {
         
         formIsValid,
 
+        errorPhoto,
         errorName,
         errorSecName,
         errorPosition,

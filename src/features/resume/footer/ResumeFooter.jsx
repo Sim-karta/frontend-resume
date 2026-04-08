@@ -32,8 +32,11 @@ const ResumeFooter = (props) => {
             if(activeUser === -1) {
                 saveUser(newUser, () => clearResume());
             } else {
-                changeUser(newUser, () => clearResume());
-                setActiveUser(-1);
+                changeUser(newUser, () => {
+                    setActiveUser(-1);
+                    clearResume();
+                });
+                
             }
         }
     }, [clearResume,

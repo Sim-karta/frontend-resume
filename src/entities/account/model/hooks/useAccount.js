@@ -12,20 +12,28 @@ const useAccount = () => {
     const saveUser = useCallback((newUser, callbackAfterAdding) => {
         usersAPI.add(newUser)
             .then((addedUser) => {
+                console.log(addedUser);
                 setUsers([...users, addedUser]);
                 callbackAfterAdding();
                 nameInputRef.current.focus();
+            })
+            .catch((error) => {
+                console.error(error);
             });
     }, [users]);
 
     const changeUser = useCallback((newUser, callbackAfterAdding) => {
         usersAPI.change(activeUser, newUser)
             .then((addedUser) => {
+                console.log(addedUser);
                 setUsers([...users.filter((user) => {
                     return user.id != activeUser;
                 }), addedUser]);
                 callbackAfterAdding();
                 nameInputRef.current.focus();
+            })
+            .catch((error) => {
+                console.error(error);
             });
     }, [users, activeUser]);
 
