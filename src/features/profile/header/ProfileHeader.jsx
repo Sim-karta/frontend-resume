@@ -12,15 +12,27 @@ const ProfileHeader = (props) => {
     } = useContext(AccountContext);
 
     const photo = useMemo(() => {
-        return userPhoto.trim() === '' ? myImage : userPhoto;
+        if (userPhoto) {
+            return userPhoto.trim() === '' ? myImage : userPhoto;
+        } else {
+            return myImage;
+        }
     }, [userPhoto]);
 
     const name = useMemo(() => {
-        return userName.trim() === '' ? "Ім'я" : userName;
+        if (userName) {
+            return userName.trim() === '' ? "Ім'я" : userName;
+        } else {
+            return "Ім'я";
+        }
     }, [userName]);
 
     const secName = useMemo(() => {
-        return userSecName.trim() === '' ? "Прізвище" : userSecName;
+        if (userSecName) {
+            return userSecName.trim() === '' ? "Прізвище" : userSecName;
+        } else {
+            return "Прізвище";
+        }
     }, [userSecName]);
 
     return (

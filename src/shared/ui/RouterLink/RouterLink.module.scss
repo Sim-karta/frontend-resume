@@ -1,0 +1,48 @@
+.button {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    height: var(--button-height);
+    padding: rem(12);
+    background-color: var(--color-accent-1);
+    color: var(--color-white);
+    border: var(--border);
+    border-radius: var(--border-radius);
+
+    &:not(.disabled) {
+        &:hover {
+            background-color: var(--color-accent-2);
+        }
+
+        &:active {
+            scale: 1.05;
+        }
+    }
+
+    &.disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+.backButton {
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--button-height);
+    padding: rem(12);
+    background-color: var(--color-gray-1);
+    color: var(--color-dark-2);
+    border: var(--border);
+    border-radius: var(--border-radius);
+
+    &:hover {
+        background-color: var(--color-gray-2);
+    }
+
+    &:active {
+        scale: 1.05;
+    }
+}

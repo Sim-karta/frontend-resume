@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { createContext } from "react";
 import useAccount from "./hooks/useAccount";
-import useAccountInputs from "./hooks/useAccountInputs";
+import useAccountFields from "./hooks/useAccountFields";
 
 export const AccountContext = createContext({});
 
@@ -56,7 +56,7 @@ export const AccountProvider = (props) => {
         validEmail,
         validPhone,
         validDescription
-    } = useAccountInputs();
+    } = useAccountFields();
 
     const value = useMemo(() => ({
         users, setUsers,

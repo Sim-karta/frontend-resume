@@ -15,7 +15,7 @@ const ResumeHeader = (props) => {
 
         if(isConfirm) {
             clearResume();
-            setActiveUser();
+            setActiveUser(-1);
             clearErrors();
         }        
     }, []);

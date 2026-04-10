@@ -9,6 +9,14 @@ const usersAPI = {
         return fetch(URL).then((response) => response.json());
     },
 
+    getById: async (id) => {
+        const response = await fetch(`${URL}/${id}`);
+        if (!response.ok) {
+            throw new Error('User not found');
+        }
+        return response.json();
+    },
+
     add: (user) => {
         return fetch(URL, {
             method: 'POST',

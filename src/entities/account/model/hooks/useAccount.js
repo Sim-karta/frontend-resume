@@ -38,7 +38,9 @@ const useAccount = () => {
     }, [users, activeUser]);
 
     useEffect(() => {
-        nameInputRef.current.focus();
+        if(nameInputRef.current) {
+            nameInputRef.current.focus();
+        }
 
         usersAPI.getAll().then(setUsers);
     }, []);

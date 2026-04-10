@@ -2,6 +2,7 @@ import { useCallback, useContext } from "react";
 import Button from "../../../shared/ui/Button/Button";
 import { AccountContext } from "../../../entities/account/model/AccountContext";
 import Select from "../../../entities/account/ui/Select/Select";
+import RouterLink from "../../../shared/ui/RouterLink/RouterLink";
 
 const ResumeFooter = (props) => {
     const {styles} = props;
@@ -36,7 +37,6 @@ const ResumeFooter = (props) => {
                     setActiveUser(-1);
                     clearResume();
                 });
-                
             }
         }
     }, [clearResume,
@@ -63,6 +63,13 @@ const ResumeFooter = (props) => {
 
     return (
         <div className={styles.footer}>
+            <RouterLink 
+                className="button"
+                to={`/profile/${activeUser}`}
+                isDisabled={activeUser == -1}
+            >
+                Відкрити профіль
+            </RouterLink>
             <Select
                 items={users}
                 onClickOption={onClickOption}

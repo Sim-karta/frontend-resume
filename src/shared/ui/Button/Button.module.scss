@@ -5,9 +5,10 @@
     height: var(--button-height);
     padding: rem(12);
     background-color: var(--color-accent-1);
-    color: var(--color-white);
+    color: var(--color-white);  
     border: var(--border);
     border-radius: var(--border-radius);
+    
 
     &:not(:disabled) {
         &:hover {

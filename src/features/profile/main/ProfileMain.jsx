@@ -13,23 +13,43 @@ const ProfileMain = (props) => {
     } = useContext(AccountContext);
 
     const position = useMemo(() => {
-        return userPosition.trim() === '' ? 'Посада' : userPosition;
+        if (userPosition) {
+            return userPosition.trim() === '' ? 'Посада' : userPosition;
+        } else {
+            return 'Посада';
+        }
     }, [userPosition]);
 
     const company = useMemo(() => {
-        return userCompany.trim() === '' ? 'Компанія' : userCompany;
+        if (userCompany) {
+            return userCompany.trim() === '' ? 'Компанія' : userCompany;
+        } else {
+            return 'Компанія';
+        }
     }, [userCompany]);
 
     const email = useMemo(() => {
-        return userEmail.trim() === '' ? 'Пошта' : userEmail;
+        if (userEmail) {
+            return userEmail.trim() === '' ? 'Пошта' : userEmail;
+        } else {
+            return 'Пошта';
+        }
     }, [userEmail]);
 
     const phone = useMemo(() => {
-        return userPhone.trim() === '' ? 'Телефон' : userPhone;
+        if (userPhone) {
+            return userPhone.trim() === '' ? 'Телефон' : userPhone;
+        } else {
+            return 'Телефон';
+        }
     }, [userPhone]);
 
     const description = useMemo(() => {
-        return userDescription.trim() === '' ? '...' : userDescription;
+        if (userDescription) {
+            return userDescription.trim() === '' ? '...' : userDescription;
+        } else {
+            return '...';
+        }
     }, [userDescription]);
 
     return (

@@ -64,7 +64,9 @@
 
 .footer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: end;
+    row-gap: rem(3);
     padding: 1.6rem 2.4rem;
     border-top: var(--border);
 }
