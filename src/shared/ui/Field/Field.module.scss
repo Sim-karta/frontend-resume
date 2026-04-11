@@ -13,9 +13,11 @@
     padding: rem(12);
     border: var(--border);
     border-radius: var(--border-radius);
+    transition-duration: var(--transition-duration);
 
     &.isInvalid {
         border-color: red;
+        animation: shake 0.4s linear;
     }
 }
 
@@ -24,6 +26,7 @@
     top: calc(100% + 2px);
     color: red;
     font-size: rem(10);
+    transition-duration: var(--transition-duration);
 }
 
 .hiddenInput {

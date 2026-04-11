@@ -17,7 +17,9 @@ export const AccountProvider = (props) => {
         changeUser,
 
         nameInputRef,
-        fileInputRef
+        fileInputRef,
+
+        profileSave
     } = useAccount();
 
     const {
@@ -100,7 +102,9 @@ export const AccountProvider = (props) => {
         validDescription,
 
         nameInputRef,
-        fileInputRef
+        fileInputRef,
+
+        profileSave
     }), [
         users, setUsers,
         activeUser, setActiveUser,
@@ -143,7 +147,9 @@ export const AccountProvider = (props) => {
         validDescription,
 
         nameInputRef,
-        fileInputRef
+        fileInputRef,
+
+        profileSave
     ]);
 
     return (

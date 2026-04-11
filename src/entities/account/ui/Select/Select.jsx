@@ -24,27 +24,25 @@ const Select = (props) => {
             >
                 {children}
             </Button>
-            {isOpen && (
-                <ul className={styles.list}>
-                    {items.map((item, index) => (
-                        <li 
-                            className={styles.item}
-                            key={index}
+            <ul className={`${styles.list} ${isOpen ? "" : "visually-hidden"}`}>
+                {items.map((item, index) => (
+                    <li 
+                        className={styles.item}
+                        key={index}
+                    >
+                        <Button
+                            className={styles.option}
+                            onClick={() => {
+                                onClickOption(index);
+                                setIsOpen(false);
+                            }}
+                            isDisabled={item.id == activeOption}
                         >
-                            <Button
-                                className={styles.option}
-                                onClick={() => {
-                                    onClickOption(index);
-                                    setIsOpen(false);
-                                }}
-                                isDisabled={item.id == activeOption}
-                            >
-                                {item[Object.keys(item)[0]]}
-                            </Button>
-                        </li>
-                    ))}
-                </ul>
-            )}
+                            {item[Object.keys(item)[0]]}
+                        </Button>
+                    </li>
+                ))}
+            </ul>
         </div>
     )
 }

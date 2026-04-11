@@ -1,4 +1,5 @@
 .profile {
+    position: relative;
     display: flex;
     flex-direction: column;
     padding: rem(30);
@@ -8,8 +9,22 @@
     box-shadow: var(--box-shadow);
     overflow: hidden;
 
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: var(--color-white);
+        opacity: 0;
+    }
+
     &.only {
         width: 35vw;
+    }
+
+    &.save {
+        &::after {
+            animation: scrin 1.4s linear;
+        }
     }
 }
 

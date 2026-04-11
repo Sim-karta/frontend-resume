@@ -1,0 +1,16 @@
+@use 'functions' as *;
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(rem(-5)); }
+    50% { transform: translateX(rem(5)); }
+    75% { transform: translateX(rem(-5)); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes scrin {
+    0% { opacity: 0; }
+    10% { opacity: 0.5; }
+    20% { opacity: 1; }
+    100% { opacity: 0; }
+}

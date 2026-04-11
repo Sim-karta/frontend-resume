@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { use, useCallback, useEffect, useRef, useState } from "react";
 import usersAPI from "../../../../shared/api/users/usersAPI";
 
 const useAccount = () => {
@@ -9,13 +9,18 @@ const useAccount = () => {
     const nameInputRef = useRef(null);
     const fileInputRef = useRef(null);
 
+    const [profileSave, setProfileSave] = useState(false);
+
     const saveUser = useCallback((newUser, callbackAfterAdding) => {
         usersAPI.add(newUser)
             .then((addedUser) => {
-                console.log(addedUser);
-                setUsers([...users, addedUser]);
-                callbackAfterAdding();
-                nameInputRef.current.focus();
+                setProfileSave(true);
+                setTimeout(() => {
+                    setUsers([...users, addedUser]);
+                    callbackAfterAdding();
+                    nameInputRef.current.focus();
+                    setProfileSave(false);
+                }, 400);
             })
             .catch((error) => {
                 console.error(error);
@@ -25,12 +30,15 @@ const useAccount = () => {
     const changeUser = useCallback((newUser, callbackAfterAdding) => {
         usersAPI.change(activeUser, newUser)
             .then((addedUser) => {
-                console.log(addedUser);
-                setUsers([...users.filter((user) => {
-                    return user.id != activeUser;
-                }), addedUser]);
-                callbackAfterAdding();
-                nameInputRef.current.focus();
+                setProfileSave(true);
+                setTimeout(() => {
+                    setUsers([...users.filter((user) => {
+                        return user.id != activeUser;
+                    }), addedUser]);
+                    callbackAfterAdding();
+                    nameInputRef.current.focus();
+                    setProfileSave(false);
+                }, 400);
             })
             .catch((error) => {
                 console.error(error);
@@ -54,7 +62,9 @@ const useAccount = () => {
         changeUser,
 
         nameInputRef,
-        fileInputRef
+        fileInputRef,
+
+        profileSave
     }
 }
 
