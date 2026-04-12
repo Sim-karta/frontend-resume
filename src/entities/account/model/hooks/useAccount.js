@@ -1,8 +1,29 @@
-import { use, useCallback, useEffect, useRef, useState } from "react";
+import { use, useCallback, useEffect, useRef, useState, useReducer } from "react";
 import usersAPI from "../../../../shared/api/users/usersAPI";
 
+const usersReducer = (state, action) => {
+    switch (action.type) {
+        case 'SET_ALL': {
+            return Array.isArray(action.users) ? action.users : state;
+        }
+        case 'ADD': {
+            return [...state, action.user]
+        }
+        case 'CHANGE': {
+            const { id, newUser } = action;
+
+            return [...state.filter((user) => {
+                return user.id != id;
+            }), newUser];
+        }
+        default: {
+            return state;
+        }
+    }
+}
+
 const useAccount = () => {
-    const [users, setUsers] = useState([]);
+    const [users, dispatch] = useReducer(usersReducer, []);
 
     const [activeUser, setActiveUser] = useState(-1);
 
@@ -16,7 +37,7 @@ const useAccount = () => {
             .then((addedUser) => {
                 setProfileSave(true);
                 setTimeout(() => {
-                    setUsers([...users, addedUser]);
+                    dispatch({ type: 'ADD', user: addedUser });
                     callbackAfterAdding();
                     nameInputRef.current.focus();
                     setProfileSave(false);
@@ -25,16 +46,14 @@ const useAccount = () => {
             .catch((error) => {
                 console.error(error);
             });
-    }, [users]);
+    }, []);
 
     const changeUser = useCallback((newUser, callbackAfterAdding) => {
         usersAPI.change(activeUser, newUser)
             .then((addedUser) => {
                 setProfileSave(true);
                 setTimeout(() => {
-                    setUsers([...users.filter((user) => {
-                        return user.id != activeUser;
-                    }), addedUser]);
+                    dispatch({ type: 'CHANGE', id: activeUser, newUser: addedUser });
                     callbackAfterAdding();
                     nameInputRef.current.focus();
                     setProfileSave(false);
@@ -50,11 +69,13 @@ const useAccount = () => {
             nameInputRef.current.focus();
         }
 
-        usersAPI.getAll().then(setUsers);
+        usersAPI.getAll().then((serverUsers) => {
+            dispatch({ type: 'SET_ALL', users: serverUsers })
+        });
     }, []);
 
     return {
-        users, setUsers,
+        users,
 
         activeUser, setActiveUser,
 
