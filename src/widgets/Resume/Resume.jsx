@@ -1,7 +1,7 @@
 import { memo } from "react";
-import ResumeFooter from "../../features/resume/footer/ResumeFooter";
-import ResumeHeader from "../../features/resume/header/ResumeHeader";
-import ResumeMain from "../../features/resume/main/ResumeMain";
+import ResumeFooter from "@/features/resume/footer";
+import ResumeHeader from "@/features/resume/header";
+import ResumeMain from "@/features/resume/main";
 import styles from './Resume.module.scss'
 
 const Resume = () => {

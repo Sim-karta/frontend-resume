@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-const useAccountErrors = (account) => {
+const useAccountErrors = () => {
     const [errorPhoto, setErrorPhoto] = useState('');
     const [errorName, setErrorName] = useState('');
     const [errorSecName, setErrorSecName] = useState('');

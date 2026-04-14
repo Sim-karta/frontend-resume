@@ -1,8 +1,8 @@
 import { useContext, useState, useEffect } from "react";
-import Profile from "../widgets/Profile/Profile";
-import { AccountContext } from "../entities/account/model/AccountContext";
-import usersAPI from "../shared/api/users/usersAPI";
-import RouterLink from "../shared/ui/RouterLink/RouterLink";
+import Profile from "@/widgets/Profile";
+import { AccountContext } from "@/entities/account";
+import usersAPI from "@/shared/api/users";
+import RouterLink from "@/shared/ui/RouterLink";
 
 const ProfilePage = (props) => {
     const { params } = props;

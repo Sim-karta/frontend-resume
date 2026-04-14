@@ -1,7 +1,7 @@
 import { memo, useCallback, useContext, useRef } from "react";
-import Field from "../../../shared/ui/Field/Field"
-import { AccountContext } from "../../../entities/account/model/AccountContext";
-import Button from "../../../shared/ui/Button/Button";
+import Field from "@/shared/ui/Field"
+import { AccountContext } from "@/entities/account";
+import Button from "@/shared/ui/Button";
 
 const ResumeMain = (props) => {
     const {styles} = props;

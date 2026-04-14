@@ -1,8 +1,8 @@
-import { useCallback, useContext } from "react";
-import Button from "../../../shared/ui/Button/Button";
-import { AccountContext } from "../../../entities/account/model/AccountContext";
-import Select from "../../../entities/account/ui/Select/Select";
-import RouterLink from "../../../shared/ui/RouterLink/RouterLink";
+import { memo, useCallback, useContext } from "react";
+import Button from "@/shared/ui/Button";
+import { AccountContext } from "@/entities/account";
+import { Select } from "@/entities/account";
+import RouterLink from "@/shared/ui/RouterLink";
 
 const ResumeFooter = (props) => {
     const {styles} = props;
@@ -88,4 +88,4 @@ const ResumeFooter = (props) => {
     )
 }
 
-export default ResumeFooter;
+export default memo(ResumeFooter);

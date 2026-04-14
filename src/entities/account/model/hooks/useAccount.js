@@ -1,5 +1,5 @@
 import { use, useCallback, useEffect, useRef, useState, useReducer } from "react";
-import usersAPI from "../../../../shared/api/users/usersAPI";
+import usersAPI from "@/shared/api/users";
 
 const usersReducer = (state, action) => {
     switch (action.type) {

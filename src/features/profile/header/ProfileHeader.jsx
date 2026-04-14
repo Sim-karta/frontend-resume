@@ -1,6 +1,6 @@
 import { useContext, useMemo } from 'react';
-import myImage from '../../../shared/assets/cat.jpg';
-import { AccountContext } from '../../../entities/account/model/AccountContext';
+import myImage from '@/shared/assets/cat.jpg';
+import { AccountContext } from '@/entities/account';
 
 const ProfileHeader = (props) => {
     const { styles } = props;

@@ -1,5 +1,5 @@
 import { useContext, useMemo } from "react";
-import { AccountContext } from "../../../entities/account/model/AccountContext";
+import { AccountContext } from "@/entities/account";
 
 const ProfileMain = (props) => {
     const { styles } = props;

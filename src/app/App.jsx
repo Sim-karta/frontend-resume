@@ -1,6 +1,6 @@
-import { AccountProvider } from '../entities/account/model/AccountContext';
-import AccountPage from '../pages/AccountPage';
-import ProfilePage from '../pages/ProfilePage';
+import { AccountProvider } from '@/entities/account';
+import AccountPage from '@/pages/AccountPage';
+import ProfilePage from '@/pages/ProfilePage';
 import Router from './routing/Router';
 import './styles';
 

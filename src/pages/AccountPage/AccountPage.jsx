@@ -1,4 +1,4 @@
-import Account from "../widgets/Account/Account";
+import Account from "@/widgets/Account";
 
 const AccountPage = () => {
   return (

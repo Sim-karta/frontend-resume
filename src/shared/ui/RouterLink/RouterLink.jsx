@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { memo, useCallback } from "react";
 import styles from './RouterLink.module.scss';
 
 const RouterLink = (props) => {
@@ -38,4 +38,4 @@ const RouterLink = (props) => {
     )
 }
 
-export default RouterLink;
+export default memo(RouterLink);

@@ -9,7 +9,7 @@ export const AccountProvider = (props) => {
     const { children } = props;
 
     const {
-        users, setUsers,
+        users,
 
         activeUser, setActiveUser,
 
@@ -61,7 +61,7 @@ export const AccountProvider = (props) => {
     } = useAccountFields();
 
     const value = useMemo(() => ({
-        users, setUsers,
+        users,
         activeUser, setActiveUser,
         clearResume,
         saveUser,
@@ -106,7 +106,7 @@ export const AccountProvider = (props) => {
 
         profileSave
     }), [
-        users, setUsers,
+        users,
         activeUser, setActiveUser,
         clearResume,
         saveUser,

@@ -1,8 +1,8 @@
 import { memo, useContext } from 'react';
-import ProfileHeader from '../../features/profile/header/ProfileHeader';
-import ProfileMain from '../../features/profile/main/ProfileMain';
+import ProfileHeader from '@/features/profile/header';
+import ProfileMain from '@/features/profile/main';
 import styles from './Profile.module.scss'
-import { AccountContext } from '../../entities/account/model/AccountContext';
+import { AccountContext } from '@/entities/account';
 
 const Profile = (props) => {
     const { only } = props;

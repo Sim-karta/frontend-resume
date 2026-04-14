@@ -136,7 +136,6 @@ const useAccountFields = () => {
 
         clearErrors,
 
-        validPhoto,
         validName,
         validSecName,
         validPosition,

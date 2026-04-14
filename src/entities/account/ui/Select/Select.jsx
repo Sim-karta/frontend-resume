@@ -1,6 +1,6 @@
 import { memo, useCallback, useContext, useState } from 'react';
 import styles from './Select.module.scss'
-import Button from '../../../../shared/ui/Button/Button';
+import Button from '@/shared/ui/Button';
 
 const Select = (props) => {
     const {
