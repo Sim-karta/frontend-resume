@@ -65,7 +65,7 @@ const ResumeFooter = (props) => {
         <div className={styles.footer}>
             <RouterLink 
                 className="button"
-                to={`/profile/${activeUser}`}
+                to={`profile/${activeUser}`}
                 isDisabled={activeUser == -1}
             >
                 Відкрити профіль

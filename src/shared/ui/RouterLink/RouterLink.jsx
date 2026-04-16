@@ -1,5 +1,6 @@
 import { memo, useCallback } from "react";
 import styles from './RouterLink.module.scss';
+import { BASE_URL } from "../../constans";
 
 const RouterLink = (props) => {
     const {
@@ -29,7 +30,7 @@ const RouterLink = (props) => {
     return (
         <a
             className={`${classes()} ${isDisabled ? styles.disabled : ''}`}
-            href={to}
+            href={`${BASE_URL}${to}`}
             onClick={handleClick}
             {...rest}
         >
